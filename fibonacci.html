@@ -4,10 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>fibonacci</title>
-    <link rel="stylesheet" href="fibonacci.css" />
+    <link rel="stylesheet" href="fibonacchi.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
-    The Fibonacci of <span id="xVar"> X </span> is <span id="yVar">Y</span>
+    <div class="container contain">
+      <div class="row fibo">
+        <div class="col">
+          Fibonacci Calculator
+        </div>
+      </div>
+        <div class="row input-but">
+          <div class="col-6 my-auto">
+            <label for="label">The Fibonacci of </label>
+            <input id="inputBox" type = "number" size="4" min="0">
+            <button id= "butn" class="butn" type="button"><span class="butn-text">is</span></button>
+          </div>
+            <div class="col-6 my-auto" id="resultCalc"></div>
+
+          
+        </div>
+      </div>
+    </div>
 
     <script src="myjs.js"></script>
   </body>

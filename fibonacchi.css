@@ -1,0 +1,60 @@
+.contain {
+  width: 100vw;
+  height: 100vh;
+}
+.fibo {
+  margin-top: 10%;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 72px;
+  line-height: 79px;
+  color: #373a3c;
+  margin-bottom: 4.8%;
+}
+.input-but {
+    width: 51%;
+    vertical-align: center;
+}
+#inputBox {
+  width: 86px;
+  height: 38px;
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+#label {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 24px;
+  color: #373a3c;
+}
+.butn {
+  width: 16px;
+  height: 21px;
+  width: 39px;
+  height: 38px;
+  left: 472px;
+  top: 229px;
+  background: #0275d8;
+  border: 1px solid #0275d8;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+.butn-text {
+  width: 16px;
+  height: 21px;
+  left: 484px;
+  top: 237px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 21px;
+  text-align: center;
+  color: #ffffff;
+}
+
