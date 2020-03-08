@@ -70,7 +70,7 @@ document.getElementById('butn').addEventListener('click', () => {
   fetch(url + userInput)
     .then(response => response.json())
     .then(function(data) {
-      let y = date.result;
+      let y = data.result;
       console.log(y);
       document.getElementById('resultCalc').innerHTML = y;
     })
