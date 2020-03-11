@@ -19,15 +19,29 @@
           Fibonacci Calculator
         </div>
       </div>
-        <div class="row input-but">
-          <div class="col-6 my-auto">
-            <label for="label">The Fibonacci of </label>
-            <input id="inputBox" type = "number" size="4" min="0">
-            <button id= "butn" class="butn" type="button"><span class="butn-text">is</span></button>
-          </div>
-            <div class="col-6 my-auto" id="resultCalc"></div>
+      <div class="row input-but">
+        <div class="col-2 my-auto text-fibo">
+          <label for="label">The Fibonacci of </label>
+        </div>
+        <div class="col-2 col-fi butn-input-result">
+          <input id="inputBox" type="number" size="4" min="0" />
 
-          
+          <button id="butn" class="butn" type="button">
+            <span class="butn-text">is</span>
+          </button>
+
+          <div id="resultCalc" class="result-show"></div>
+        </div>
+        <div id="forty-two-error" class="forty-two-error-noshow"></div>
+        <div class="spinner-noshow" id="spinner-noshow">
+          <div class="spinner-border text-dark" role="status"></div>
+        </div>
+      </div>
+      <div class="row input-but">
+        <div class="col-2 offset-1" id="error-bigger-than">
+          <span id="error-bigger" class="error-big"
+            >Can't be larger than 50</span
+          >
         </div>
       </div>
     </div>

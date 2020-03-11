@@ -49,7 +49,7 @@
 // calcBtn.addEventListener('click', c);
 
 // document.getElementById('butn').addEventListener('click', () => {
-//   let userInput = document.getElementById('inputBox').value;
+// let userInput = document.getElementById('inputBox').value;
 //   let y;
 //   let myArray = [0, 1];
 //   for (i = 0; i < userInput; i++) {
@@ -61,20 +61,69 @@
 //   resultCalc.innerHTML = y;
 // });
 
+// milestone 5
+// const url = 'http://localhost:5050/fibonacci/';
+
+// document.getElementById('butn').addEventListener('click', () => {
+//   console.log('click');
+//   userInput = document.getElementById('inputBox').value;
+//   fetch(url + userInput)
+//     .then(response => response.json())
+//     .then(function(data) {
+//       let y = data.result;
+//       document.getElementById('resultCalc').innerHTML = y;
+//     })
+// });
+
+// milestone 6
+
 const url = 'http://localhost:5050/fibonacci/';
 
 document.getElementById('butn').addEventListener('click', () => {
-  console.log('click');
+  const mySpinner = document.getElementById('spinner-noshow');
+  mySpinner.className = 'spinner';
+  const fortyTwoError = document.getElementById('forty-two-error');
+  fortyTwoError.className = 'forty-two-error-noshow';
+  const biggerThanFifty = document.getElementById('error-bigger');
+  biggerThanFifty.className = 'error-big';
+  const resultDissapear = document.getElementById('resultCalc');
+  resultDissapear.className = 'result-noshow';
+  const inputBoxColorChange = document.getElementById('inputBox');
+  console.log(biggerThanFifty);
   userInput = document.getElementById('inputBox').value;
+  inputBoxColorChange.style.border = '#cccccc 2px solid';
+  inputBoxColorChange.style.color = '#373a3c';
 
-  fetch(url + userInput)
-    .then(response => response.json())
-    .then(function(data) {
-      let y = data.result;
-      console.log(y);
-      document.getElementById('resultCalc').innerHTML = y;
-    })
-    .catch(function(error) {
-      console.log('error');
+  //  if bigger than 50
+  if (userInput > 50) {
+    mySpinner.className = 'spinner-noshow';
+    resultDissapear.className = 'result-noshow';
+    biggerThanFifty.className = 'error-bigger';
+    inputBoxColorChange.style.border = '#f2dede 2px solid';
+    inputBoxColorChange.style.color = '#D9534F';
+
+    // if smaller than 50
+  } else {
+    fetch(url + userInput).then(response => {
+      //  if response is ok
+      if (response.ok) {
+        mySpinner.className = 'spinner-noshow';
+        resultDissapear.className = 'result-show';
+        response.json().then(function(data) {
+          let y = data.result;
+          document.getElementById('resultCalc').innerHTML = y;
+
+          // if error
+        });
+      } else {
+        fortyTwoError.className = 'forty-two-error-nowshow';
+        response.text().then(error => {
+          mySpinner.className = 'spinner-noshow';
+          console.log(error);
+          document.getElementById('forty-two-error').innerHTML =
+            'server error: ' + error;
+        });
+      }
     });
+  }
 });
