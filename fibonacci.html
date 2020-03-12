@@ -11,6 +11,12 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="fibonacchi.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="container contain">
@@ -37,12 +43,26 @@
           <div class="spinner-border text-dark" role="status"></div>
         </div>
       </div>
-      <div class="row input-but">
-        <div class="col-2 offset-1" id="error-bigger-than">
+      <div class="row">
+        <div class="col-3 offset-1" id="error-bigger-than">
           <span id="error-bigger" class="error-big"
             >Can't be larger than 50</span
           >
         </div>
+      </div>
+      <div class="row row-spinner-result">
+        <div class="col-4 flex-spinner-two">
+          <div class="result-headline">Results</div>
+          <div class="spinner-noshow-two" id="spinner-noshow-down">
+          <div
+            class="spinner-border text-dark " 
+            role="status"
+          ></div>
+        </div>
+        </div>
+      </div>
+      <div class="row results" id="resultsSearch">
+          
       </div>
     </div>
 

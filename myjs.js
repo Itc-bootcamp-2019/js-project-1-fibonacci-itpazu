@@ -77,6 +77,59 @@
 
 // milestone 6
 
+// const url = 'http://localhost:5050/fibonacci/';
+
+// document.getElementById('butn').addEventListener('click', () => {
+//   const mySpinner = document.getElementById('spinner-noshow');
+//   mySpinner.className = 'spinner';
+//   const fortyTwoError = document.getElementById('forty-two-error');
+//   fortyTwoError.className = 'forty-two-error-noshow';
+//   const biggerThanFifty = document.getElementById('error-bigger');
+//   biggerThanFifty.className = 'error-big';
+//   const resultDissapear = document.getElementById('resultCalc');
+//   resultDissapear.className = 'result-noshow';
+//   const inputBoxColorChange = document.getElementById('inputBox');
+//   console.log(biggerThanFifty);
+//   userInput = document.getElementById('inputBox').value;
+//   inputBoxColorChange.style.border = '#cccccc 2px solid';
+//   inputBoxColorChange.style.color = '#373a3c';
+
+//   //  if bigger than 50
+//   if (userInput > 50) {
+//     mySpinner.className = 'spinner-noshow';
+//     resultDissapear.className = 'result-noshow';
+//     biggerThanFifty.className = 'error-bigger';
+//     inputBoxColorChange.style.border = '#f2dede 2px solid';
+//     inputBoxColorChange.style.color = '#D9534F';
+
+//     // if smaller than 50
+//   } else {
+//     fetch(url + userInput).then(response => {
+//       //  if response is ok
+//       if (response.ok) {
+//         mySpinner.className = 'spinner-noshow';
+//         resultDissapear.className = 'result-show';
+//         response.json().then(function(data) {
+//           let y = data.result;
+//           document.getElementById('resultCalc').innerHTML = y;
+
+//           // if error
+//         });
+//       } else {
+//         fortyTwoError.className = 'forty-two-error-nowshow';
+//         response.text().then(error => {
+//           mySpinner.className = 'spinner-noshow';
+//           console.log(error);
+//           document.getElementById('forty-two-error').innerHTML =
+//             'server error: ' + error;
+//         });
+//       }
+//     });
+//   }
+// });
+
+// milestone 7:
+
 const url = 'http://localhost:5050/fibonacci/';
 
 document.getElementById('butn').addEventListener('click', () => {
@@ -119,11 +172,46 @@ document.getElementById('butn').addEventListener('click', () => {
         fortyTwoError.className = 'forty-two-error-nowshow';
         response.text().then(error => {
           mySpinner.className = 'spinner-noshow';
-          console.log(error);
           document.getElementById('forty-two-error').innerHTML =
             'server error: ' + error;
         });
       }
     });
   }
+});
+let urlResults = 'http://localhost:5050/getFibonacciResults';
+document.getElementById('butn').addEventListener('click', () => {
+  const mySecondSpinner = document.getElementById('spinner-noshow-down');
+  mySecondSpinner.className = 'spinner-d';
+  let resultsInText= document.getElementById('resultsSearch');
+  resultsInText.innerHTML= '';
+  
+
+  fetch(urlResults)
+ 
+    .then(response => {  if (response.ok) {
+      mySecondSpinner.className ='spinner-noshow-two'
+      console.log(mySecondSpinner)
+      return response.json();
+    }
+    })
+    .then(dataResults => {
+      console.log(dataResults)
+      let resultsSearch = dataResults.results;
+      dataResults.results = dataResults.results.sort((a, b) => b.createdDate - a.createdDate);
+      for (i=0; i < resultsSearch.length; i++) {
+      
+        resultsInText= document.getElementById('resultsSearch');
+        const resultNumber = document.createElement("div");
+        resultNumber.classList.add('result-number', 'col-12')
+        resultsInText.append(resultNumber);
+        
+        resultNumber.innerHTML = `The Fibonnaci of <strong>${resultsSearch[i].number}</strong>
+        is <strong>${resultsSearch[i].result}</strong> calculated at:  ${new Date (resultsSearch[i].createdDate)}`;
+
+
+
+      }
+      
+    });
 });
