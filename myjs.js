@@ -128,21 +128,27 @@
 //   }
 // });
 
-// milestone 7:
+//
 
-// const url = 'http://localhost:5050/fibonacci/';
+// let mySpinner = document.getElementById('spinner-noshow');
+// let fortyTwoError = document.getElementById('forty-two-error');
+// let biggerThanFifty = document.getElementById('error-bigger');
+// let resultDissapear = document.getElementById('resultCalc');
 
-// document.getElementById('butn').addEventListener('click', () => {
-//   const mySpinner = document.getElementById('spinner-noshow');
+// document.getElementById('butn').addEventListener('click', clickUpDown);
+
+// function clickUpDown() {
+//    clickUp();
+//    clickDown();
+//  }
+
+//  function clickUp () {
+//   const url = 'http://localhost:5050/fibonacci/';
 //   mySpinner.className = 'spinner';
-//   const fortyTwoError = document.getElementById('forty-two-error');
 //   fortyTwoError.className = 'forty-two-error-noshow';
-//   const biggerThanFifty = document.getElementById('error-bigger');
 //   biggerThanFifty.className = 'error-big';
-//   const resultDissapear = document.getElementById('resultCalc');
 //   resultDissapear.className = 'result-noshow';
 //   const inputBoxColorChange = document.getElementById('inputBox');
-//   console.log(biggerThanFifty);
 //   userInput = document.getElementById('inputBox').value;
 //   inputBoxColorChange.style.border = '#cccccc 2px solid';
 //   inputBoxColorChange.style.color = '#373a3c';
@@ -178,9 +184,11 @@
 //       }
 //     });
 //   }
-// });
+// };
+
 // let urlResults = 'http://localhost:5050/getFibonacciResults';
-// document.getElementById('butn').addEventListener('click', () => {
+
+// function clickDown() {
 //   const mySecondSpinner = document.getElementById('spinner-noshow-down');
 //   mySecondSpinner.className = 'spinner-d';
 //   let resultsInText= document.getElementById('resultsSearch');
@@ -211,7 +219,7 @@
 //       }
 
 //     });
-// });
+// };
 
 // milestone 8
 
@@ -240,7 +248,6 @@ let inputBoxColorChange = document.getElementById('inputBox');
 
 let urlResults = 'http://localhost:5050/getFibonacciResults';
 let mySecondSpinner = document.getElementById('spinner-noshow-down');
-let resultsInText = document.getElementById('resultsSearch');
 
 let resultCalc = document.getElementById('resultCalc');
 
@@ -252,19 +259,29 @@ document.getElementById('butn').addEventListener('click', EventListenerUpDown);
 
 clickDown();
 function EventListenerUpDown() {
+  let userInput = document.getElementById('inputBox').value;
+
   if (checkBoxCheck.checked === true) {
-    clickUp();
-    clickDown();
+    if (userInput > 50) {
+      let resultsInText = document.getElementById('resultsSearch');
+      resultsInText.innerHTML = '';
+      clickUp();
+    } else {
+      clickUp();
+      clickDown();
+    }
   } else {
     c();
+    resultsInText.innerHTML = '';
   }
 }
 
 //      function for server calculator on click
+
 function clickUp() {
   userInput = document.getElementById('inputBox').value;
   biggerThanFifty.className = 'error-big';
-  resultsInText.className = 'noshow-results';
+  // resultsInText.className = 'noshow-results';
   mySpinner.className = 'spinner';
   fortyTwoError.className = 'forty-two-error-noshow';
   resultDissapear.className = 'result-noshow';
@@ -303,28 +320,32 @@ function clickUp() {
     });
   }
 }
+let resultsInText = document.getElementById('resultsSearch');
 
-//        function for results log (page load)
 function fetchResults() {
+  let resultsInText = document.getElementById('resultsSearch');
+  resultsInText.innerHTML = '';
+
   fetch(urlResults)
     .then(responseTwo => {
       if (responseTwo.ok) {
-        console.log('function')
-
         mySecondSpinner.className = 'spinner-noshow-two';
-        resultsInText.className = 'show-results';
+        // resultsInText.className = 'show-results';
         return responseTwo.json();
       }
     })
     .then(dataResults => {
-      let resultsSearch = dataResults.results;
+      resultsSearch = dataResults.results;
       dataResults.results = dataResults.results.sort(
         (a, b) => b.createdDate - a.createdDate
       );
       for (i = 0; i < resultsSearch.length; i++) {
+        resultsInText = document.getElementById('resultsSearch');
+
         const resultNumber = document.createElement('div');
         resultNumber.classList.add('result-number', 'col-12');
         resultsInText.append(resultNumber);
+        resultsInText.className = 'show';
 
         resultNumber.innerHTML = `The Fibonnaci of <strong>${
           resultsSearch[i].number
