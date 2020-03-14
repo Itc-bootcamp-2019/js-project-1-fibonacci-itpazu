@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="row input-but">
-        <div class="col-2 my-auto text-fibo">
+        <div class=" col-2 text-fibo">
           <label for="label">The Fibonacci of </label>
         </div>
         <div class="col-2 col-fi butn-input-result">
@@ -43,8 +43,13 @@
           <div class="spinner-border text-dark" role="status"></div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-3 offset-1" id="error-bigger-than">
+      <div class="row row-checkbox-save" >
+        <div class="col-2 checkbox-div" >
+          <div id="wrapper-checkbox"></div>
+          <div id="save-calc"> save calculation</div>
+        </div>
+        
+        <div class="col-3" id="error-bigger-than">
           <span id="error-bigger" class="error-big"
             >Can't be larger than 50</span
           >
@@ -54,16 +59,11 @@
         <div class="col-4 flex-spinner-two">
           <div class="result-headline">Results</div>
           <div class="spinner-noshow-two" id="spinner-noshow-down">
-          <div
-            class="spinner-border text-dark " 
-            role="status"
-          ></div>
-        </div>
+            <div class="spinner-border text-dark " role="status"></div>
+          </div>
         </div>
       </div>
-      <div class="row results" id="resultsSearch">
-          
-      </div>
+      <div class="row results" id="resultsSearch"></div>
     </div>
 
     <script src="myjs.js"></script>

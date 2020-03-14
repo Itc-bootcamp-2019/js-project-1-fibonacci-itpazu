@@ -16,10 +16,11 @@
   width: 100%;
   vertical-align: center;
 }
-.text-fibo {
-  text-align: right;
-}
 
+.text-fibo {
+    vertical-align: center;
+    transform: translateY(12%);
+}
 #inputBox {
   width: 86px;
   height: 38px;
@@ -66,7 +67,7 @@
   justify-content: space-around;
   align-items: center;
 }
-.resultClc {
+.resultCalc {
   align-self: center;
 }
 .error-big {
@@ -75,10 +76,14 @@
 .spinner-noshow, .spinner-noshow-two, .result-noshow, .forty-two-error-noshow  {
   display: none;
 }
-
-.forty-two-error-noshow {
-  display: none;
+.result-show {
+    text-decoration: underline;
+    font-weight: bold;
 }
+
+/* .forty-two-error-noshow {
+  display: none;
+} */
 #error-bigger {
   background: #f2dede;
   border: 1px solid #ebcccc;
@@ -90,6 +95,11 @@
   line-height: 24px;
   align-items: flex-end;
   color: #a94442;
+  margin-left: 10px;
+  
+}
+#error-bigger-than {
+    margin-left: -3.5%;
 }
 
 
@@ -124,7 +134,26 @@ border-bottom: 1px solid #000000;
 padding-bottom: 1.5%;
 padding-top: 2%;
 
+}
 
+.checkbox-div {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 3%;
 
 }
 
+#save-calc {
+    font-family: Open Sans;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 24px;
+}
+.row-checkbox-save {
+    margin-top:1%;
+}
+
+.noshow-results {
+    display: none;
+}
